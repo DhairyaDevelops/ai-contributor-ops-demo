@@ -6,6 +6,23 @@ An original, responsive React portfolio project showing how a small team can rou
 
 Try routing a fictional submission, then read the workflow decisions and tested boundaries.
 
+## New: Brief-to-delivery planning lab
+
+[Open the planning lab](https://dhairyadevelops.github.io/ai-contributor-ops-demo/planner/index.html) · [Planning case study](PLANNING_LAB.md) · [Sample Markdown handoff](SAMPLE_PLAN.md)
+
+Explore fictional LLM-review, physical-AI video and language/voice briefs. Calculate production and review capacity, expose missing prerequisites, complete a manual checklist and prepare a Markdown handoff. **This is transparent rules-based planning, not an AI agent or live model inference.** Changes invalidate prior review checks; a reviewed export requires zero planning blockers and all acknowledgements.
+
+![Desktop view of the planning lab](preview-planner-desktop.png)
+
+<details>
+<summary>Planning lab on mobile</summary>
+
+![Mobile planning lab](preview-planner-mobile.png)
+
+</details>
+
+The planner source lives in `public/planner/`; Vite copies it into `docs/planner/`. Run `npm test` for 26 planner tests plus 12 original workflow tests. Inputs remain in memory. Downloads intentionally create a local file, with a readable fallback if the browser blocks downloads. No data is uploaded or submitted.
+
 ![Desktop preview of the Fieldwork contributor operations dashboard](preview-desktop.png)
 
 <details>
