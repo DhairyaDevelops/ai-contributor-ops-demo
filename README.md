@@ -2,6 +2,19 @@
 
 An original, responsive React portfolio project showing how a small team can route AI-data tasks and keep submission-review handoffs clear. **All records are fictional.** This is a metadata-only simulation, not company software, a live contributor system, or an AI model.
 
+[Try the live demo](https://dhairyadevelops.github.io/ai-contributor-ops-demo/) · [Read the case study](CASE_STUDY.md)
+
+Try routing a fictional submission, then read the workflow decisions and tested boundaries.
+
+![Desktop preview of the Fieldwork contributor operations dashboard](preview-desktop.png)
+
+<details>
+<summary>Mobile preview</summary>
+
+![Mobile preview](preview-mobile.png)
+
+</details>
+
 ## What to try
 
 1. Open **Organize a shelf (FW-1041)**, which starts as submitted and unassigned.
@@ -40,7 +53,20 @@ npm run build   # Production bundle in dist/
 npm run preview # Preview the production build locally
 ```
 
-The built `dist/` directory can be served by a static host. There are no client-side routes requiring a server fallback. It is not included in this repository.
+The built `dist/` directory can be served by a static host. There are no client-side routes requiring a server fallback. `dist/` is not included in this repository; the separate `docs/` build is used for the hosted demonstration.
+
+## Static demo publishing
+
+`vite.config.js` sets the base path to `/ai-contributor-ops-demo/`. The `docs/` directory is a checked-in static build for GitHub Pages (source: `main`, folder: `/docs`). It is generated output, not a second implementation.
+
+```sh
+npm ci
+npm test
+npm run build:pages
+npm run preview -- --outDir docs
+```
+
+After changing source files, rebuild and publish the complete updated `docs/` folder. `public/.nojekyll` is copied into the build. Change the Vite base path when hosting under a different URL path. GitHub Pages serves the files; application edits remain only in browser memory.
 
 ## Workflow rules
 
@@ -77,7 +103,7 @@ All changes live in React's in-memory state and disappear on refresh. Review not
 
 The production application contains **no service API calls, analytics, third-party fonts, external embeds, cookies, local storage or credentials**. It loads its own static files; Vite's development server uses its normal local development connection. Do not type real personal information or confidential material into the demo. No files are uploaded. Reviewer and contributor IDs are invented; the fictional records do not represent actual individuals or clients. User-written notes are rendered as plain React text, not injected HTML.
 
-No company code, assets, model responses, applicant records or paid-client materials are used. Do not add them without the appropriate rights and privacy controls. Do not commit `.env` files, secrets, private exports, dependency folders or build output.
+No company code, assets, model responses, applicant records or paid-client materials are used. Do not add them without the appropriate rights and privacy controls. Do not commit `.env` files, secrets, private exports or dependency folders. Only the reviewed static demonstration build in `docs/` is intentionally published.
 
 ## Provenance
 
