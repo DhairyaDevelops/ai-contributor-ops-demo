@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="An independent AI-data delivery planning demonstration by Dhairya Sharma. Explore capacity, review gates and a local Markdown handoff with fictional briefs." />
+  <meta name="theme-color" content="#10242d" />
+  <title>Fieldwork Planning Lab — Brief to delivery</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2310242d'/%3E%3Cpath d='M9 9h15v4H13v4h9v4h-9v5H9z' fill='%237de0cf'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#workspace">Skip to planner</a>
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="Fieldwork dashboard"><span class="mark" aria-hidden="true">f.</span>fieldwork<span class="lab">PLANNING LAB</span></a>
+    <nav aria-label="Project links"><a href="../">Operations demo <span aria-hidden="true">↗</span></a><a href="https://github.com/DhairyaDevelops/ai-contributor-ops-demo">Source & case study <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="workspace">
+    <section class="intro">
+      <div><p class="eyebrow">FROM REQUIREMENTS TO A REVIEWABLE HANDOFF</p><h1>A brief. A plan.<br class="mobile-break" /> A clear next step.</h1><p class="intro-copy">Explore the decisions behind an AI-data program—not just the final numbers.</p></div>
+      <div class="mode-label"><span class="mode-icon" aria-hidden="true">⌘</span><div><strong>Rules-based planning</strong><span>No model calls · No uploads</span></div></div>
+    </section>
+    <div class="disclosure"><strong>Independent portfolio demo.</strong> Use fictional information only. Inputs stay in memory; downloads save to your device. Estimates are assumptions, not a quote or staffing commitment.</div>
+    <div class="workspace-grid">
+      <section class="brief-panel" aria-labelledby="brief-title">
+        <div class="panel-heading"><div><p class="eyebrow">01 / DEFINE</p><h2 id="brief-title">Shape the brief</h2></div><span class="small-label">SCENARIO INPUTS</span></div>
+        <label class="field-label" for="preset">Start with a fictional example</label>
+        <div class="preset-row"><select id="preset" aria-describedby="preset-help"></select><button type="button" id="load-preset" class="button subtle">Load</button></div>
+        <p class="hint" id="preset-help">Loading replaces this local brief and clears review checks.</p>
+        <form id="brief-form" novalidate>
+          <div class="field"><label for="name">Program name</label><input id="name" name="name" maxlength="80" required aria-describedby="name-error" /><span class="error" id="name-error"></span></div>
+          <div class="field"><label for="type">Program type</label><select id="type" name="type" aria-describedby="type-error"></select><span class="error" id="type-error"></span></div>
+          <div class="field"><label for="purpose">What should the program deliver?</label><textarea id="purpose" name="purpose" rows="3" maxlength="500" aria-describedby="purpose-hint purpose-error" required></textarea><span class="hint" id="purpose-hint">12–500 characters. No names, contact details or confidential information.</span><span class="error" id="purpose-error"></span></div>
+          <fieldset><legend>Workload assumptions</legend><div class="field-grid">
+            <div class="field"><label for="units">Units to deliver</label><input id="units" name="units" type="number" min="1" max="100000" step="1" aria-describedby="units-error" required /><span class="error" id="units-error"></span></div>
+            <div class="field"><label for="minutesPerUnit">Minutes per unit</label><input id="minutesPerUnit" name="minutesPerUnit" type="number" min="0.5" max="120" step="0.5" aria-describedby="minutesPerUnit-error" required /><span class="error" id="minutesPerUnit-error"></span></div>
+            <div class="field"><label for="reviewPercent">Review coverage %</label><input id="reviewPercent" name="reviewPercent" type="number" min="1" max="100" step="1" aria-describedby="reviewPercent-error" required /><span class="error" id="reviewPercent-error"></span></div>
+            <div class="field"><label for="reviewMinutes">Minutes per review</label><input id="reviewMinutes" name="reviewMinutes" type="number" min="0.5" max="120" step="0.5" aria-describedby="reviewMinutes-error" required /><span class="error" id="reviewMinutes-error"></span></div>
+          </div></fieldset>
+          <fieldset><legend>Shared team capacity</legend><p class="hint">One pool of hours covers production and review.</p><div class="field-grid three">
+            <div class="field"><label for="people">People</label><input id="people" name="people" type="number" min="1" max="1000" step="1" aria-describedby="people-error" required /><span class="error" id="people-error"></span></div>
+            <div class="field"><label for="days">Workdays</label><input id="days" name="days" type="number" min="1" max="180" step="1" aria-describedby="days-error" required /><span class="error" id="days-error"></span></div>
+            <div class="field"><label for="hoursPerDay">Hours/day</label><input id="hoursPerDay" name="hoursPerDay" type="number" min="0.5" max="8" step="0.5" aria-describedby="hoursPerDay-error" required /><span class="error" id="hoursPerDay-error"></span></div>
+          </div></fieldset>
+          <fieldset class="prerequisites"><legend>Scenario prerequisites</legend>
+            <label class="check-row"><input id="rightsConfirmed" name="rightsConfirmed" type="checkbox" /><span>Assume collection/use rights are confirmed for this fictional scenario.</span></label>
+            <label class="check-row"><input id="acceptanceDefined" name="acceptanceDefined" type="checkbox" /><span>Assume acceptance criteria are agreed for this fictional scenario.</span></label>
+            <p class="hint">These are planning assumptions, not verification of consent, rights or compliance.</p>
+          </fieldset>
+          <button class="button primary build" type="submit">Build delivery plan <span aria-hidden="true">→</span></button>
+          <p id="form-status" class="form-status" role="status"></p>
+        </form>
+      </section>
+      <section class="plan-panel" aria-labelledby="plan-title">
+        <div class="plan-heading"><div><p class="eyebrow">02 / PLAN & CHALLENGE</p><h2 id="plan-title" tabindex="-1">Your delivery blueprint</h2></div><span id="plan-state" class="state-tag">DRAFT SCENARIO</span></div>
+        <p class="plan-context" id="plan-context"></p>
+        <div id="stale-banner" class="stale-banner" hidden>Brief changed. Rebuild the plan before reviewing or downloading.</div>
+        <div class="metrics" aria-label="Calculated workload">
+          <div class="metric"><span>Total effort</span><strong id="total-hours">—</strong><small>production + review hours</small></div>
+          <div class="metric"><span>Available capacity</span><strong id="available-hours">—</strong><small>shared team hours</small></div>
+          <div class="metric accent"><span id="capacity-label">Capacity use</span><strong id="capacity-percent">—</strong><small id="capacity-detail">assumption-based estimate</small></div>
+        </div>
+        <div class="effort-breakdown"><span id="production-detail"></span><span id="review-detail"></span></div>
+        <section class="gates" aria-labelledby="gates-title"><div class="section-title"><h3 id="gates-title">Challenge the plan</h3><span id="gate-count" class="small-label"></span></div><ul id="blockers"></ul><p class="hint">Passing these checks does not approve a real project for launch.</p></section>
+        <section class="sequence" aria-labelledby="sequence-title"><div class="section-title"><h3 id="sequence-title">A delivery sequence</h3><span class="small-label">SUGGESTED ROLES</span></div><ol id="stages" class="stages"></ol></section>
+        <section class="review-section" aria-labelledby="review-title"><div class="section-title"><h3 id="review-title">Human review checklist</h3><span id="review-count" class="small-label">0 CHECKED</span></div><p class="hint">Review the assumptions and mark only the items you have checked in this demo.</p><div id="checks"></div><label class="check-row acknowledgement"><input type="checkbox" id="reviewed" /><span>I reviewed this fictional plan and its limitations.</span></label></section>
+        <details class="assumptions"><summary>Calculation method & limitations</summary><ul id="assumptions"></ul><p>Deterministic templates and arithmetic—not AI-generated reasoning, agent execution, a quality prediction or an employment recommendation. No external model is connected.</p></details>
+        <section class="handoff" aria-labelledby="handoff-title"><div><p class="eyebrow">03 / HAND OFF</p><h3 id="handoff-title">Take the reasoning with you.</h3><p>Download a readable Markdown plan with inputs, estimates, blockers and review status.</p></div><div class="export-actions"><button type="button" id="download-draft" class="button subtle">Download draft</button><button type="button" id="download-reviewed" class="button primary" disabled>Download reviewed plan</button></div><p id="export-help" class="hint"></p><p id="export-status" class="form-status" role="status"></p><details id="export-preview" class="export-preview" hidden><summary>Read or copy the prepared Markdown</summary><label for="markdown-preview">Prepared plan — read-only</label><textarea id="markdown-preview" rows="10" readonly spellcheck="false"></textarea><p class="hint">If your browser blocks downloads, copy this text into a file ending in .md.</p></details></section>
+      </section>
+    </div>
+  </main>
+  <footer><span>FIELDWORK / Independent portfolio by Dhairya Sharma</span><span>AI-assisted development · No client data · No live AI inference</span></footer>
+  <noscript>This planner requires JavaScript. It runs locally in your browser; no model service is connected.</noscript>
+</body>
+</html>
