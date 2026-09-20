@@ -343,6 +343,10 @@ export default function App() {
             <Icon name="info" />
             About this demo
           </a>
+          <a className="nav-link" href={`${import.meta.env.BASE_URL}planner/index.html`}>
+            <Icon name="grid" />
+            Planning lab
+          </a>
         </nav>
         <div className="sidebar-foot">
           <div className="privacy-emblem">
@@ -352,7 +356,7 @@ export default function App() {
           <p>
             Fictional IDs. No uploads.
             <br />
-            Nothing leaves this browser.
+            No input data is uploaded.
           </p>
           <span className="sidebar-version">PORTFOLIO DEMO · V1.0</span>
         </div>
@@ -681,8 +685,8 @@ export default function App() {
               <div>
                 <h2>A demonstration, not a production system.</h2>
                 <p>
-                  No uploads, accounts, payments, analytics or external
-                  services. Edits live in browser memory and reset on refresh.
+                  No uploads, accounts, payments, analytics or service API calls.
+                  Edits live in browser memory and reset on refresh.
                   All decisions are manual and apply to submissions—not hiring.
                 </p>
               </div>
